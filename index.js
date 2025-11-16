@@ -1,12 +1,9 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
+import initCommand from './src/commands/init.js';
 const program = new Command();
 
-program.command('test')
-.description('test command')
-.action(() =>{
-    console.log("test command is running");
-})
+initCommand(program);
 program.parse();
 
 

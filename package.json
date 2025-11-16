@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/xIshanSandhux/CLI-Tool#readme",
   "dependencies": {
-    "commander": "^14.0.2"
+    "commander": "^14.0.2",
+    "inquirer": "^12.11.1"
   }
 }
