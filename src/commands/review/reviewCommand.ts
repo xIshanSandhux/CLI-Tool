@@ -1,46 +1,45 @@
-import chalk from "chalk";
-import { chat } from "../../LLM/llm.js";
-import { Messages } from "../../LLM/MessageInterface.js";
-import { Command } from "commander";
+import {Command} from 'commander';
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
+import { Messages } from '../../LLM/MessageInterface.js';
+import { chat } from '../../LLM/llm.js';
+import chalk from 'chalk';
 
-export default function explainCommand(program: Command){
-
-    program.command('explain')
-    .description('Explain full code file or specific code block (line numbers)')
-    .option('-f, --file <filePath>', 'Path to the code file to explain')
+export default function reviewCommand(program: Command){
+    program.command('review')
+    .description('Review the code and provide feedback')
+    .option('-f, --file <filePath>', 'Path to the code file to review')
     .action(async (options)=>{
-        
         let systemPrompt: string = '';
         let fileContent: string = '';
 
         if(options.file){
             try{
                 console.log("🔍 " + chalk.yellow("Searching File..."))
-                systemPrompt = await readSystemPrompt('src/commands/explain/sysPrompt.md');
+                systemPrompt = await readSystemPrompt('src/commands/review/sysPrompt.md');
                 fileContent = await readFileContent(options.file);
                 console.log("📄 " + chalk.green("File Found!"))
                 console.log("📖 "+chalk.blue("Reading File..."))
-                fileContent = fileContent.replace(/[ \t]+$/gm,"").replace(/\r\n/g, "\n") .replace(/(^[ \t]*\n){2,}/gm, "\n");
+                fileContent = fileContent.replace(/[ \t]+$/gm,"").replace(/\n{2,}/gm,"\n");
             }catch(error){
                 console.error(`Error : ${error}`);
                 throw error;
             }
             const messages: Messages[] =[
                 {'role': 'system', 'content': systemPrompt},
-                {'role':'user', 'content': `Explain the code: ${fileContent}`}
+                {'role':'user', 'content': `Review the code: ${fileContent}`}
             ]
             
-            console.log("🧠 "+chalk.magenta("Explaining Code..."));
+            console.log("🧠 "+chalk.magenta("Reviewing Code..."));
             const response = await chat(messages);
-            console.log("💡 "+chalk.yellow("Code Explanation:"))
+            console.log("✨ "+chalk.green("Review Complete!"))
+            console.log("💡 "+chalk.yellow("Review Feedback:"))
             console.log(response);
+
         }else{
             throw new Error('No file path provided');
         }
     })
-
 }
 
 async function readSystemPrompt(filePath: string): Promise<string>{
@@ -65,4 +64,3 @@ async function readFileContent(filePath: string): Promise<string>{
         throw error;
     }
 }
-
