@@ -24,19 +24,19 @@ export function initQuestions() :Questions[] {
             type: 'list',
             name: 'provider',
             message: 'Please Select your AI Provider: ',
-            choices: ['groq', 'google'],
-            default: 'groq'
+            choices: ['openrouter'],
+            default: 'openrouter'
         },
         {
             type: 'input',
             name: 'model',
-            message: 'Please Enter your Model Name',
-            default: 'llama3.1-8b-instant'
+            message: 'Please Enter your Model Name: ',
+            default: 'x-ai/grok-4.1-fast'
         },
         {
             type: 'confirm',
             name: 'cache',
-            message: 'Do you want to enable caching?',
+            message: 'Do you want to enable caching? ',
             default: false
         }
     ] 

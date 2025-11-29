@@ -6,7 +6,10 @@ import explainCommand from './commands/explain/explainCommand.js';
 import reviewCommand from './commands/review/reviewCommand.js';
 const program = new Command();
 
-console.log('Hello World');
+
+program.name('acli')
+.description('An AI-powered coding assistant for explaining, reviewing, and improving your code — right from the terminal.')
+.version('0.1.0');
 
 
 initCommand(program);

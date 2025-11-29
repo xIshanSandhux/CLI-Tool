@@ -7,8 +7,8 @@ import chalk from 'chalk';
 
 export default function reviewCommand(program: Command){
     program.command('review')
-    .description('Review the code and provide feedback')
-    .option('-f, --file <filePath>', 'Path to the code file to review')
+    .description('AI powered code review and feedback')
+    .requiredOption('-f, --file <filePath>', 'Path (absolute or relative) to the code file to be reviewed')
     .action(async (options)=>{
         let systemPrompt: string = '';
         let fileContent: string = '';
@@ -20,7 +20,7 @@ export default function reviewCommand(program: Command){
                 fileContent = await readFileContent(options.file);
                 console.log("📄 " + chalk.green("File Found!"))
                 console.log("📖 "+chalk.blue("Reading File..."))
-                fileContent = fileContent.replace(/[ \t]+$/gm,"").replace(/\n{2,}/gm,"\n");
+                fileContent = fileContent.replace(/[ \t]+$/gm,"").replace(/\r\n/g, "\n") .replace(/(^[ \t]*\n){2,}/gm, "\n");
             }catch(error){
                 console.error(`Error : ${error}`);
                 throw error;

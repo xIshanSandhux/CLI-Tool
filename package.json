@@ -13,7 +13,7 @@
     "url": "git+https://github.com/xIshanSandhux/CLI-Tool.git"
   },
   "bin": {
-    "ai": "./dist/index.js"
+    "acli": "./dist/index.js"
   },
   "type": "module",
   "keywords": [],

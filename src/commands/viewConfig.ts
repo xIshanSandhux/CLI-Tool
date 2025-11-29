@@ -8,14 +8,15 @@ import inquirer from 'inquirer';
 
 export default function ConfigCommand(program: Command) {
     program.command('config')
-    .option('-v, --view', 'View Current Config')
-    .option('-u, --update', 'Update Config')
+    .description('View or update current config')
+    .option('-v, --view', 'View current config')
+    .option('-u, --update', 'Update current config')
     .action(async (options)=>{
         let currentConfig: Record<string, string>;
         if(checkConfigFileExists()){
             currentConfig = await readConfigFile();
         }else{
-            throw new Error(chalk.red('No config file found. Please run `ai init` to create one.'));
+            throw new Error(chalk.red('No config file found. Please run `acli init` to create one.'));
         }
         if('view' in options ){
             const heading : string = '⚙️ Current Config';

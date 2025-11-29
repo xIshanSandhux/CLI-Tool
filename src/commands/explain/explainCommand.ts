@@ -8,8 +8,8 @@ import path from 'node:path';
 export default function explainCommand(program: Command){
 
     program.command('explain')
-    .description('Explain full code file or specific code block (line numbers)')
-    .option('-f, --file <filePath>', 'Path to the code file to explain')
+    .description('AI powered code explanation')
+    .requiredOption('-f, --file <filePath>', 'Path (absolute or relative) to the code file to be explained')
     .action(async (options)=>{
         
         let systemPrompt: string = '';
@@ -22,7 +22,7 @@ export default function explainCommand(program: Command){
                 fileContent = await readFileContent(options.file);
                 console.log("📄 " + chalk.green("File Found!"))
                 console.log("📖 "+chalk.blue("Reading File..."))
-                fileContent = fileContent.replace(/[ \t]+$/gm,"").replace(/\r\n/g, "\n") .replace(/(^[ \t]*\n){2,}/gm, "\n");
+                fileContent = fileContent.replace(/[ \t]+$/gm,"").replace(/\r\n/g, "\n").replace(/(^[ \t]*\n){2,}/gm, "\n");
             }catch(error){
                 console.error(`Error : ${error}`);
                 throw error;
