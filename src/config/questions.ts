@@ -53,7 +53,7 @@ export async function updateConfigQuestions()  {
     const questions = [];
     for (const key in currentConfig) {
         questions.push({
-            'type': currentConfig[key] === 'cache'? 'confirm' : 'input',
+            'type': 'input',
             'name': key,
             'message': `Please Enter your updated ${key}, the default will be displayed in the format (current value): `,
             'default': currentConfig[key]

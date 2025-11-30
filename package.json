@@ -2,7 +2,7 @@
   "name": "acli-tool",
   "version": "0.1.0",
   "description": "An AI-powered coding assistant for explaining, reviewing, and improving your code — right from the terminal.",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -15,9 +15,47 @@
   "bin": {
     "acli": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
-  "keywords": [],
-  "author": "",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "acli-tool",
+    "cli",
+    "command-line",
+    "terminal",
+    "ai",
+    "ai-cli",
+    "llm",
+    "gpt",
+    "openrouter",
+    "openai",
+    "anthropic",
+    "grok",
+    "chatgpt",
+    "ai-assistant",
+    "coding-assistant",
+    "code-explain",
+    "code-review",
+    "code-refactor",
+    "code-analysis",
+    "code-generator",
+    "developer-tools",
+    "nodejs",
+    "javascript",
+    "typescript",
+    "config-manager",
+    "cache",
+    "sqlite",
+    "static-analysis",
+    "semantic-search",
+    "repo-analysis",
+    "git"
+  ],
+  "author": "Ishan Sandhu",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xIshanSandhux/CLI-Tool/issues"
