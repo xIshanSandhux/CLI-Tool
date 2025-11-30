@@ -27,7 +27,8 @@
     "@openrouter/sdk": "^0.1.27",
     "chalk": "^5.6.2",
     "commander": "^14.0.2",
-    "inquirer": "^12.11.1"
+    "inquirer": "^12.11.1",
+    "less-pager-mini": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",

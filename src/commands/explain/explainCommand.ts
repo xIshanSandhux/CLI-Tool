@@ -4,6 +4,7 @@ import { Messages } from "../../LLM/MessageInterface.js";
 import { Command } from "commander";
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
+import pager from 'less-pager-mini';
 
 export default function explainCommand(program: Command){
 
@@ -32,10 +33,10 @@ export default function explainCommand(program: Command){
                 {'role':'user', 'content': `Explain the code: ${fileContent}`}
             ]
             
-            console.log("🧠 "+chalk.magenta("Explaining Code..."));
+            console.log("🧠 "+chalk.magenta("Generating Code Explanation..."));
             const response = await chat(messages);
-            console.log("💡 "+chalk.yellow("Code Explanation:"))
-            console.log(response);
+            const finalResponse = "💡 "+chalk.yellow("Code Explanation: \n") + response;
+            await pager(finalResponse);
         }else{
             throw new Error('No file path provided');
         }

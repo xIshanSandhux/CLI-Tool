@@ -4,6 +4,7 @@ import path from 'node:path';
 import { Messages } from '../../LLM/MessageInterface.js';
 import { chat } from '../../LLM/llm.js';
 import chalk from 'chalk';
+import pager from 'less-pager-mini';
 
 export default function reviewCommand(program: Command){
     program.command('review')
@@ -32,9 +33,8 @@ export default function reviewCommand(program: Command){
             
             console.log("🧠 "+chalk.magenta("Reviewing Code..."));
             const response = await chat(messages);
-            console.log("✨ "+chalk.green("Review Complete!"))
-            console.log("💡 "+chalk.yellow("Review Feedback:"))
-            console.log(response);
+            const finalResponse = "💡 "+chalk.yellow("Review Feedback: \n") + response;
+            await pager(finalResponse);
 
         }else{
             throw new Error('No file path provided');
