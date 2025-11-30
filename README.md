@@ -6,7 +6,7 @@ An AI-powered coding assistant for explaining, reviewing, and improving your cod
 ## Installation
 
 ```bash
-npm install -g acli
+npm install -g acli-tool
 ```
 
 ## Quick Start
@@ -97,10 +97,10 @@ You can update your configuration at any time using `acli config --update`.
 
 - Node.js (v14 or higher)
 - OpenRouter API key ([Get one here](https://openrouter.ai/))
-
+"" only is applicable
 ## License
 
-MIT
+ISC
 
 ## Issues & Support
 

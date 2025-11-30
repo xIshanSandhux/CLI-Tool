@@ -32,12 +32,6 @@ export function initQuestions() :Questions[] {
             name: 'model',
             message: 'Please Enter your Model Name: ',
             default: 'x-ai/grok-4.1-fast'
-        },
-        {
-            type: 'confirm',
-            name: 'cache',
-            message: 'Do you want to enable caching? ',
-            default: false
         }
     ] 
 }

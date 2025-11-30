@@ -6,6 +6,7 @@ import fsPromises from 'node:fs/promises';
 export async function createConfigDir() {
 
     try{
+        console.log(configDirPath());
         await fsPromises.mkdir(configDirPath());
     } catch (error) {
         console.error(`Error creating config directory: ${error}`)
@@ -31,6 +32,7 @@ export async function updateConfigFile(config) {
 }
 
 export function checkConfigDirExists() {
+    console.log(configDirPath());
     if (!fs.existsSync(configDirPath())) {
         return false;
     }else {
